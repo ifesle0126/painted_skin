@@ -39,7 +39,7 @@ def img2img(img_path, prompt):
         with open(rst_img_path, 'wb') as f:
             f.write(base64.b64decode(img_str))
         print(f"inpaint img. {rst_img_path}", datetime.datetime.now())
-        inpaint_imgs[i] = rst_img_path
+        inpaint_imgs.append(rst_img_path)
     return inpaint_imgs
 
 if __name__ == "__main__":
