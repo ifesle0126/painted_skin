@@ -17,8 +17,10 @@ bucket = oss2.Bucket(auth, endpoint, bucket)
 # https://examplebucket.oss-cn-hangzhou.aliyuncs.com/example/example.jpg
 
 
-def upload_img(img_name):
-    upload_img_name = img_name + calendar.timegm(time.gmtime())
-    rst = bucket.put_object_from_file('./painted_skin_imgs/' + img_name, upload_img_name)
-    print("http status: {0}, request_id: {1}, img: {2}".format(rst.status, rst.request_id, upload_img_name))
-    return "https://myadrea-bucket.oss-cn-beijing-internal.aliyuncs.com/painted_skin_imgs/" + upload_img_name
+def upload_img(img_names):
+	img_urls = []
+	for img_name in img_names:
+        upload_img_name = img_name + calendar.timegm(time.gmtime())
+        rst = bucket.put_object_from_file('./painted_skin_imgs/' + img_name, upload_img_name)
+        print("http status: {0}, request_id: {1}, img: {2}".format(rst.status, rst.request_id, upload_img_name))
+        img_urls.append("https://myadrea-bucket.oss-cn-beijing-internal.aliyuncs.com/painted_skin_imgs/" + upload_img_name)
