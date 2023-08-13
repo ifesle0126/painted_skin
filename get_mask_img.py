@@ -19,7 +19,8 @@ def get_mask_img_base64(img_path):
         init_img_base64 = base64.b64encode(img_data).decode("ascii")
         mask_config['input_image'] = init_img_base64
     response = requests.post(url = 'http://127.0.0.1:7860/rembg', json = mask_config, headers = {"Content-Type": "application/json"})
-    print("get mask img status: {0}", response.status_code)
+    print("get mask img status: ", response.status_code)
+    print(img_date)
     return base64.b64encode(img_data).decode("ascii")
 
 

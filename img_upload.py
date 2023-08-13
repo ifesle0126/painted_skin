@@ -4,6 +4,7 @@ import time
 import configparser
 
 config = configparser.ConfigParser()
+config.read('config.ini')
 oss2_config = config['oss2']
 
 access_key_id = oss2_config['access_key_id']
@@ -11,7 +12,7 @@ access_key_secret = oss2_config['access_key_secret']
 endpoint = oss2_config['endpoint']
 bucket = oss2_config['bucket']
 
-auth=oss2.Auth(access_key_id, acess_key + secret)
+auth=oss2.Auth(access_key_id, access_key_secret)
 bucket = oss2.Bucket(auth, endpoint, bucket)
 # https://examplebucket.oss-cn-hangzhou.aliyuncs.com/example/example.jpg
 
