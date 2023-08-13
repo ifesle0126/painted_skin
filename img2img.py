@@ -40,7 +40,7 @@ def img2img(img_path, prompt):
             f.write(base64.b64decode(img_str))
         print(f"inpaint img. {rst_img_path}", datetime.datetime.now())
         inpaint_imgs.append(rst_img_path)
-    return inpaint_imgs
+    return img_upload.upload_img(inpaint_imgs)
 
 if __name__ == "__main__":
     print(img2img(sys.argv[1], sys.argv[2]))
