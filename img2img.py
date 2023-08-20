@@ -12,19 +12,16 @@ import datetime
 
 batch_size = 2
 inpaint_config = {
-    # "init_images": [init_img_base64],
-    # "mask": mask_img_base64,
     "mask_blur": 4,
     "inpainting_mask_invert": 1,
     "sampler_index": "DPM++ SDE Karras",
-    "denoising_strength": 1,
-    # "prompt": prompt,
-    "batch_size": batch_size
+    "denoising_strength": 1
 }
 
 def img2img(img_path, prompt):
-    inpaint_config['mask'] = get_mask_img.get_mask_img_base64(img_path)
-    inpaint_config['prompt'] = prompt
+    inpaint_config["mask"] = get_mask_img.get_mask_img_base64(img_path)
+    inpaint_config["prompt"] = prompt
+    inpaint_config["batch_size"] = batch_size
     with open(img_path, 'rb') as f:
         img_data = f.read()
         init_img_base64 = base64.b64encode(img_data).decode("ascii")
@@ -44,4 +41,3 @@ def img2img(img_path, prompt):
 
 if __name__ == "__main__":
     print(img2img(sys.argv[1], sys.argv[2]))
-

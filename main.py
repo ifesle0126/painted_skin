@@ -1,5 +1,6 @@
 import web
 import translator
+import json
 
 urls = (
     '/', 'index',
@@ -23,8 +24,14 @@ class paint:
         return translator.translate(ori_prompt, optimize=True)
 
     def POST(self):
-        data = web.data()
-        return translator.translate(data)
+        request = web.input(data={})
+        print(request.data)
+        with open("./img/zzz.jpg", 'wb') as f:
+            f.write(request.data.img.read())
+        # json_data = json.loads(data)
+        # ori_prompt = json_data['prompt']
+        print(data.prompt)
+        # return translator.translate(ori_prompt)
 
 
 if __name__ == "__main__":
